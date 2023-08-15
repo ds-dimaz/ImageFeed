@@ -12,7 +12,7 @@ final class ImagesListCell: UITableViewCell {
     
     static let reuseIdentifier = "ImagesListCell"
     
-    func configureCell(for cell: ImagesListCell) {
+    func makeGradient(for cell: ImagesListCell) {
         if !gradientInited {
             let gradient = CAGradientLayer()
             gradient.frame = gradientView.bounds
