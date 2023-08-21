@@ -12,7 +12,7 @@ final class ImagesListCell: UITableViewCell {
     
     static let reuseIdentifier = "ImagesListCell"
     
-    func configureCell(for cell: ImagesListCell) {
+    func addGradient(for cell: ImagesListCell) {
         if !gradientInited {
             let gradient = CAGradientLayer()
             gradient.frame = gradientView.bounds
@@ -22,7 +22,7 @@ final class ImagesListCell: UITableViewCell {
             let maskLayer = CAShapeLayer()
             maskLayer.path = path.cgPath
             gradientView.layer.mask = maskLayer
-
+            
             gradientInited.toggle()
         }
     }
