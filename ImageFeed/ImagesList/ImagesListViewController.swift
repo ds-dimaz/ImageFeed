@@ -2,7 +2,7 @@ import Foundation
 import UIKit
 
 class ImagesListViewController: UIViewController {
-
+    
     @IBOutlet private var tableView: UITableView!
     
     private let photosName: [String] = Array(0..<20).map{ "\($0)" }
@@ -24,10 +24,10 @@ class ImagesListViewController: UIViewController {
         guard let image = UIImage(named: photosName[indexPath.row]) else {
             return
         }
-
+        
         cell.cellImage.image = image
         cell.dateLabel.text = dateFormatter.string(from: Date())
-
+        
         let isLiked = indexPath.row % 2 == 0
         let likeImage = isLiked ? UIImage(named: "LikeButtonOn") : UIImage(named: "LikeButtonOff")
         cell.likeButton.setImage(likeImage, for: .normal)
@@ -48,7 +48,7 @@ extension ImagesListViewController: UITableViewDataSource {
         }
         
         configCell(for: imageListCell, with: indexPath)
-        imageListCell.makeGradient(for: imageListCell)
+        imageListCell.addGradient(for: imageListCell)
         
         return imageListCell
     }
