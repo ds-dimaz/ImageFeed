@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A35E8BCF2A9E2BE3007A71F5 /* SingleImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35E8BCE2A9E2BE3007A71F5 /* SingleImageViewController.swift */; };
+		A3B823A72AE1C38900B8F8A4 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B823A62AE1C38900B8F8A4 /* ProfileViewController.swift */; };
 		A3EAFFEF2A8A7006003566BD /* ImagesListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EAFFEE2A8A7006003566BD /* ImagesListCell.swift */; };
 		A3ED98852A825BD000961A9E /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3ED98842A825BD000961A9E /* UIColor+Extensions.swift */; };
 		A3F869262A7EA96C0092692D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F869252A7EA96C0092692D /* AppDelegate.swift */; };
@@ -20,6 +21,7 @@
 
 /* Begin PBXFileReference section */
 		A35E8BCE2A9E2BE3007A71F5 /* SingleImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleImageViewController.swift; sourceTree = "<group>"; };
+		A3B823A62AE1C38900B8F8A4 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		A3EAFFEE2A8A7006003566BD /* ImagesListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesListCell.swift; sourceTree = "<group>"; };
 		A3ED98842A825BD000961A9E /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		A3F869222A7EA96C0092692D /* ImageFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,6 +51,14 @@
 				A35E8BCE2A9E2BE3007A71F5 /* SingleImageViewController.swift */,
 			);
 			path = SingleImageView;
+			sourceTree = "<group>";
+		};
+		A3B823A82AE1CD3F00B8F8A4 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				A3B823A62AE1C38900B8F8A4 /* ProfileViewController.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		A3EAFFF02A8A705C003566BD /* ImagesList */ = {
@@ -98,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				A368B4BC2AA0B8910051AF22 /* SingleImageView */,
+				A3B823A82AE1CD3F00B8F8A4 /* Profile */,
 				A3EAFFF02A8A705C003566BD /* ImagesList */,
 				A3F8692B2A7EA96C0092692D /* Main.storyboard */,
 				A3ED98862A825EB600961A9E /* Helpers */,
@@ -183,6 +194,7 @@
 				A3F869262A7EA96C0092692D /* AppDelegate.swift in Sources */,
 				A3EAFFEF2A8A7006003566BD /* ImagesListCell.swift in Sources */,
 				A3F869282A7EA96C0092692D /* SceneDelegate.swift in Sources */,
+				A3B823A72AE1C38900B8F8A4 /* ProfileViewController.swift in Sources */,
 				A35E8BCF2A9E2BE3007A71F5 /* SingleImageViewController.swift in Sources */,
 				A3ED98852A825BD000961A9E /* UIColor+Extensions.swift in Sources */,
 			);
