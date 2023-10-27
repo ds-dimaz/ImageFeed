@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-class ProfileViewController: UIViewController {
+final class ProfileViewController: UIViewController {
 
     private let avatarImageView: UIImageView = {
         let imageView = UIImageView()
@@ -26,7 +26,7 @@ class ProfileViewController: UIViewController {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "@ekaterina_nov"
-        label.textColor = UIColor(red: 0.682, green: 0.686, blue: 0.706, alpha: 1)
+        label.textColor = .ypGray
         label.font = UIFont.systemFont(ofSize: 13)
         return label
     }()
@@ -43,22 +43,29 @@ class ProfileViewController: UIViewController {
     private let logOutButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(UIImage(named: "ExitIcon"), for: .normal)
+        button.setImage(UIImage(named: "LogOutIcon"), for: .normal)
         button.addTarget(self, action: #selector(logOutButtonTapped), for: .touchUpInside)
         return button
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        view.backgroundColor = UIColor(red: 0.102, green: 0.106, blue: 0.133, alpha: 1)
+        
+        setupViews()
+        setuoConstraints()
+    }
+    
+    private func setupViews() {
+        view.backgroundColor = .ypBlack
 
         view.addSubview(avatarImageView)
         view.addSubview(nameLabel)
         view.addSubview(loginLabel)
         view.addSubview(descriptionLabel)
         view.addSubview(logOutButton)
-
+    }
+    
+    private func setuoConstraints() {
         NSLayoutConstraint.activate([
             avatarImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 32),
             avatarImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
@@ -78,6 +85,7 @@ class ProfileViewController: UIViewController {
             logOutButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 45)
         ])
     }
+    
 
     @objc private func logOutButtonTapped() { }
 }
