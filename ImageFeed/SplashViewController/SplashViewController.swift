@@ -20,6 +20,8 @@ class SplashViewController: UIViewController {
         super.viewDidLoad()
         
         alertPresenter.delegate = self
+        
+        setUpView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -60,6 +62,32 @@ class SplashViewController: UIViewController {
             .instantiateViewController(withIdentifier: "TabBarViewController")
         
         window.rootViewController = tabBarController
+    }
+    
+    private func setUpView() {
+        let rootView = UIView()
+        rootView.frame = CGRect(x: 0.0, y: 0.0, width: 393, height: 852)
+        rootView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        rootView.backgroundColor = UIColor(named: "YP Black")
+
+        let imageView = UIImageView()
+        imageView.clipsToBounds = true
+        imageView.isUserInteractionEnabled = false
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = UIImage(named: "LaunchScreenIcon")
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+
+        rootView.addSubview(imageView)
+
+        let safeAreaGuide = UILayoutGuide()
+        rootView.addLayoutGuide(safeAreaGuide)
+
+        NSLayoutConstraint.activate([
+            imageView.centerXAnchor.constraint(equalTo: rootView.centerXAnchor),
+            imageView.centerYAnchor.constraint(equalTo: rootView.centerYAnchor)
+        ])
+
+        view = rootView
     }
 }
 

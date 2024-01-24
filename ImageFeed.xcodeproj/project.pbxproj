@@ -10,6 +10,7 @@
 		A301967D2B1A143D0038272A /* ProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A301967C2B1A143D0038272A /* ProfileService.swift */; };
 		A330EE412B585476000B841B /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = A330EE402B585476000B841B /* Kingfisher */; };
 		A33899002B5E682D00C62AA4 /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = A33898FF2B5E682D00C62AA4 /* SwiftKeychainWrapper */; };
+		A33899022B5EAA9B00C62AA4 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33899012B5EAA9B00C62AA4 /* TabBarController.swift */; };
 		A341E62B2AFAB75F006F1C28 /* WebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A341E62A2AFAB75F006F1C28 /* WebViewViewController.swift */; };
 		A349917E2AEBEC610097E4F7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A349917D2AEBEC610097E4F7 /* Constants.swift */; };
 		A35E8BCF2A9E2BE3007A71F5 /* SingleImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35E8BCE2A9E2BE3007A71F5 /* SingleImageViewController.swift */; };
@@ -38,6 +39,7 @@
 
 /* Begin PBXFileReference section */
 		A301967C2B1A143D0038272A /* ProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileService.swift; sourceTree = "<group>"; };
+		A33899012B5EAA9B00C62AA4 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		A341E62A2AFAB75F006F1C28 /* WebViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewViewController.swift; sourceTree = "<group>"; };
 		A349917D2AEBEC610097E4F7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A35E8BCE2A9E2BE3007A71F5 /* SingleImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleImageViewController.swift; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 				A349917D2AEBEC610097E4F7 /* Constants.swift */,
 				A3F869272A7EA96C0092692D /* SceneDelegate.swift */,
 				A3B7F1432B18895E006A8254 /* UIBlockingProgressHUD.swift */,
+				A33899012B5EAA9B00C62AA4 /* TabBarController.swift */,
 			);
 			path = ImageFeed;
 			sourceTree = "<group>";
@@ -293,6 +296,7 @@
 				A3B823A72AE1C38900B8F8A4 /* ProfileViewController.swift in Sources */,
 				A35E8BCF2A9E2BE3007A71F5 /* SingleImageViewController.swift in Sources */,
 				A3ED98852A825BD000961A9E /* UIColor+Extensions.swift in Sources */,
+				A33899022B5EAA9B00C62AA4 /* TabBarController.swift in Sources */,
 				A3D9826B2AF4D29C00D11CB1 /* AuthViewController.swift in Sources */,
 				A39235612B058A84001A4526 /* OAuth2TokenStorage.swift in Sources */,
 				A3AEB4D92B29FD230036C5C5 /* AlertPresenter.swift in Sources */,
