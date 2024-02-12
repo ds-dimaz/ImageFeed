@@ -1,12 +1,20 @@
 import Foundation
 import UIKit
 
+import Kingfisher
+
 final class ProfileViewController: UIViewController {
+    
+    private let profileService = ProfileService.shared
+    private let profileImageService = ProfileImageService.shared
+    
+    private var profileImageServiceObserver: NSObjectProtocol?
+    
 
     private let avatarImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(named: "Avatar")
+        imageView.image = UIImage(named: "AvatarPlaceholder")
         imageView.contentMode = .scaleAspectFill
         imageView.layer.masksToBounds = true
         imageView.layer.cornerRadius = 35
@@ -51,8 +59,57 @@ final class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if let url = profileImageService.avatarURL {
+            updateAvatar(url: url)
+        }
+        
+        profileImageServiceObserver = NotificationCenter.default.addObserver(
+            forName: ProfileImageService.didChangeNotification,
+            object: nil,
+            queue: .main
+        ) { [weak self] notification in
+            guard let self = self else { return }
+            self.updateAvatar(notification: notification)
+        }
+        
         setupViews()
-        setuoConstraints()
+        setupConstraints()
+        
+        setUpProfileInfo()
+    }
+    
+    private func setUpProfileInfo() {
+        
+        guard let profile = profileService.profile else {
+            assertionFailure("Failed to load profile")
+            return
+        }
+        
+        nameLabel.text = profile.name
+        loginLabel.text = profile.username
+        descriptionLabel.text = profile.bio
+    }
+    
+    private func updateAvatar(notification: Notification) {
+        guard
+            isViewLoaded,
+            let userInfo = notification.userInfo,
+            let profileImageURL = userInfo["URL"] as? String,
+            let url = URL(string: profileImageURL)
+        else { return }
+        
+        updateAvatar(url: url)
+        
+    }
+    
+    private func updateAvatar(url: URL) {
+        avatarImageView.kf.indicatorType = .activity
+        
+        let processor = RoundCornerImageProcessor(cornerRadius: 61)
+        
+        avatarImageView.kf.setImage(with: url,
+                                    placeholder: UIImage(named: "AvatarPlaceholder"),
+                                    options: [.processor(processor)])
     }
     
     private func setupViews() {
@@ -65,7 +122,7 @@ final class ProfileViewController: UIViewController {
         view.addSubview(logOutButton)
     }
     
-    private func setuoConstraints() {
+    private func setupConstraints() {
         NSLayoutConstraint.activate([
             avatarImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 32),
             avatarImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
