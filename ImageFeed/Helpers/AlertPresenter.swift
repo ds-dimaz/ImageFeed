@@ -4,8 +4,6 @@
 //
 //  Created by Дмитрий Зайцев on 13.12.23.
 //
-
-import Foundation
 import UIKit
 
 final class AlertPresenter {

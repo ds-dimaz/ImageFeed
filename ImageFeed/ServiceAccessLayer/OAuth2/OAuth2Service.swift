@@ -15,7 +15,7 @@ final class OAuth2Service {
     }
     
     func fetchOAuthToken(_ code: String, completion: @escaping (Result<String, Error>) -> Void ){
-        guard !(code == lastCode && currentTask != nil) else {
+        guard code != lastCode && currentTask == nil else {
             return
         }
         
@@ -54,7 +54,7 @@ extension OAuth2Service {
             + "&&code=\(code)"
             + "&&grant_type=authorization_code",
             httpMethod: "POST",
-            baseURLString: "https://unsplash.com"
+            baseURLString: BaseURLString
         )
     }
 }

@@ -1,6 +1,5 @@
-import Foundation
+
 import UIKit
-//import ProgressHUD
 
 class SplashViewController: UIViewController {
     
@@ -10,7 +9,7 @@ class SplashViewController: UIViewController {
     private let oauth2TokenStorage = OAuth2TokenStorage()
     private let alertPresenter = AlertPresenter()
     
-    private let ShowAuthenticationScreen = "ShowAuthenticationScreen"
+    private let showAuthenticationScreen = "ShowAuthenticationScreen"
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         .lightContent
@@ -57,7 +56,7 @@ class SplashViewController: UIViewController {
     }
     
     private func switchToTabBarController() {
-        guard let window = UIApplication.shared.windows.first else { fatalError("Invalid Configuration") }
+        guard let window = UIApplication.shared.windows.first else { fatalError("Invalid Configuration") } //TODO: Реализовать по-другому не используя fatalError
         let tabBarController = UIStoryboard(name: "Main", bundle: .main)
             .instantiateViewController(withIdentifier: "TabBarViewController")
         
@@ -94,11 +93,11 @@ class SplashViewController: UIViewController {
 extension SplashViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == ShowAuthenticationScreen {
+        if segue.identifier == showAuthenticationScreen {
             guard
                 let navigationController = segue.destination as? UINavigationController,
                 let viewController = navigationController.viewControllers[0] as? AuthViewController
-            else { fatalError("Failed to prepare for \(ShowAuthenticationScreen)") }
+            else { fatalError("Failed to prepare for \(showAuthenticationScreen)") }
             viewController.delegate = self
         } else {
             super.prepare(for: segue, sender: sender)
@@ -147,7 +146,7 @@ extension SplashViewController: AuthViewControllerDelegate {
     private func showLoginAlert(error: Error) {
         alertPresenter.showAlert(title: "Something went wrong",
                                  message: "Couldn't log in, \(error.localizedDescription)") {
-            self.performSegue(withIdentifier: self.ShowAuthenticationScreen, sender: nil)
+            self.performSegue(withIdentifier: self.showAuthenticationScreen, sender: nil)
         }
     }
 }
