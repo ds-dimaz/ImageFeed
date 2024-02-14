@@ -1,13 +1,17 @@
-import Foundation
 import UIKit
+import Kingfisher
 
 class ImagesListViewController: UIViewController {
     
     @IBOutlet private var tableView: UITableView!
     
+    private let imagesListService = ImagesListService.shared
+    
     private let ShowSingleImageSegueIdentifier = "ShowSingleImage"
     
     private let photosName: [String] = Array(0..<20).map{ "\($0)" }
+    
+    private var imagesListServiceObserver: NSObjectProtocol?
     
     private lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -20,6 +24,15 @@ class ImagesListViewController: UIViewController {
         super.viewDidLoad()
         
         tableView.contentInset = UIEdgeInsets(top: 12, left: 0, bottom: 12, right: 0)
+        
+        imagesListServiceObserver = NotificationCenter.default.addObserver(
+            forName: ImagesListService.didChangeNotification,
+            object: nil,
+            queue: .main
+        ) { [weak self] notification in
+            guard let self = self else { return }
+            self.updateTableViewAnimated()
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -31,6 +44,10 @@ class ImagesListViewController: UIViewController {
         } else {
             super.prepare(for: segue, sender: sender)
         }
+    }
+    
+    func updateTableViewAnimated() {
+        
     }
 }
 
@@ -86,6 +103,14 @@ extension ImagesListViewController: UITableViewDelegate {
         let cellHeight = image.size.height * scale + imageInsets.top + imageInsets.bottom
         
         return cellHeight
+    }
+    
+    func tableView(_ tableView: UITableView,
+                   willDisplay cell: UITableViewCell,
+                   forRowAt indexPath: IndexPath) {
+        if indexPath.row + 1 == imagesListService.photos.count {
+            imagesListService.fetchPhotosNextPage()
+        }
     }
 }
 
