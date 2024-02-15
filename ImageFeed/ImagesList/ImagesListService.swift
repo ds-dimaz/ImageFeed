@@ -65,9 +65,9 @@ class ImagesListService {
 extension ImagesListService {
     func makeImagesListRequest(page: Int, perPage: Int) -> URLRequest? {
         requestBuilder.makeHTTPRequest(
-            path: "/photos"
-            + "&&page=\(page)"
-            + "&&per_page=\(perPage)",
+            path: ("/photos?"
+                   + "page=\(page)"
+                   + "&&per_page=\(perPage)"),
             httpMethod: "GET",
             baseURLString: DefaultBaseURLString)
     }
